@@ -1,4 +1,3 @@
-
 from django.db import models
 from users.models import Department
 import consts as vehicle_type
@@ -34,6 +33,6 @@ class VehicleDimension(models.Model):
     payload_capacity = models.FloatField(help_text='Gross Vehicle Weight in Kilograms', verbose_name='GVW')
 
     def __str__(self):
-        return f"Cargo bed of {self.car.type} {self.car.plates}: Payload capacity:{self.dmc}, Length:{self.length}, Width:{self.width}, Height:{self.height}"
+        return f"Cargo bed of {self.car.type} {self.car.plates}: Payload capacity:{self.payload_capacity}, Length:{self.length}, Width:{self.width}, Height:{self.height}"
 
 
