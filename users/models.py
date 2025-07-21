@@ -45,6 +45,7 @@ class EMPLOYEE(CustomUser):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     driver = models.BooleanField(default=True)
     driver_semi = models.BooleanField(default=False)
+    on_route = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return (f""

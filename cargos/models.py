@@ -7,6 +7,7 @@ class CargoTransport(models.Model):
         Working in conjunction with OrderDimension for better performance
     """
     distance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Distance")
+    duration = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Duration")
     price = models.DecimalField(max_digits=10, decimal_places=2, min_value=100)
     collection_date = models.DateTimeField(auto_now_add=True, verbose_name="Collection Date")
     collection_address = models.CharField(
