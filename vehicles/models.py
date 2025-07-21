@@ -1,14 +1,15 @@
-import consts as VEHICLE_TYPE
 
 from django.db import models
-
+from users.models import Department
+import consts as vehicle_type
 
 class Vehicle(models.Model):
     """
         The Vehicle model represents vehicles (Solo Truck, Tractor, Semi-trailer) operated by a specific company.
         It works in conjunction with the VehicleDimension component to improve overall performance.
     """
-    type = models.CharField(max_length=30, choices=VEHICLE_TYPE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    type = models.CharField(max_length=30, choices=vehicle_type)
     plates = models.CharField(max_length=20, unique=True)
     connected_to = models.ForeignKey(
         'self',
