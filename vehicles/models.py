@@ -2,6 +2,7 @@ from django.db import models
 from users.models import Department
 import consts as vehicle_type
 
+
 class Vehicle(models.Model):
     """
         The Vehicle model represents vehicles (Solo Truck, Tractor, Semi-trailer) operated by a specific company.
@@ -21,6 +22,7 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return f"{self.type} plates:{self.plates} "
+
 
 class VehicleDimension(models.Model):
     """

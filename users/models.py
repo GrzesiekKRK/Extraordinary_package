@@ -24,8 +24,10 @@ class CustomUser(AbstractUser):
         verbose_name="Billing Address",
         help_text="Billing address",
     )
+
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
+
 
 class Department(models.Model):
     """
@@ -37,7 +39,8 @@ class Department(models.Model):
     def __str__(self) -> str:
         return f"{self.type} {self.address}"
 
-class EMPLOYEE(CustomUser):
+
+class Employee(CustomUser):
     """
         The Employee model creates info about drivers assigned to transport departments or office employees.
     """

@@ -16,7 +16,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "djangoql",
-    "django_filters",
     "debug_toolbar",
     "django_extensions",
     "axes",
@@ -26,15 +25,14 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_EXTENSIONS = [
-    "cart",
+    "cargos",
     "deliveries",
-    "inventories",
+    "schedules",
     "notifications",
     "orders",
     "payments",
-    "products",
+    "vehicles",
     "users",
-    "wishlists",
 ]
 
 INSTALLED_APPS += INSTALLED_EXTENSIONS
