@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 import consts as departments
 
+
 class CustomUser(AbstractUser):
     """
         Custom user model extending the base AbstractUser to include additional fields
@@ -9,6 +10,7 @@ class CustomUser(AbstractUser):
         information, and secondary contact details.
     """
     email = models.EmailField(max_length=50,unique=True, verbose_name="Email")
+    phone_number = models.CharField(max_length=11, verbose_name="Phone Number")
     created_at = models.DateTimeField(auto_now_add=True)
     secondary_email = models.EmailField(
         max_length=50,
