@@ -6,8 +6,10 @@ class CargoTransport(models.Model):
         The CargoTransport model represents customer cargo pickup and delivery point and price.
         Working in conjunction with OrderDimension for better performance
     """
-    distance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Distance")
-    transport_duration = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Duration")
+    total_distance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Total Distance")
+    total_duration = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Total Duration")
+    transport_distance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Transport Distance")
+    transport_duration = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Transport Duration")
     price = models.DecimalField(max_digits=10, decimal_places=2, min_value=100)
     collection_date = models.DateTimeField(auto_now_add=True, verbose_name="Collection Date")
     collection_address = models.CharField(
@@ -38,11 +40,11 @@ class CargoDimension(models.Model):
     The CargoDimension model represents cargo dimensions it weights.
      With its help will decide what type of vehicle will do CargoTransport.
     """
-    cargo = models.OneToOneField(CargoTransport, on_delete=models.CASCADE, related_name='dimensions')
-    length = models.FloatField(help_text='length of the cargo bed in centimeters')
-    width = models.FloatField(help_text='width  of the cargo bed in centimeters')
-    height = models.FloatField(help_text='height of the cargo bed in centimeters')
-    weight = models.FloatField(help_text='Gross Vehicle Weight in Kilograms', verbose_name='GVW')
+    cargo = models.OneToOneField(CargoTransport, on_delete=models.CASCADE, verbose_name="Cargo", related_name='dimensions')
+    length = models.FloatField(help_text='length of the cargo bed in centimeters', verbose_name="Length")
+    width = models.FloatField(help_text='width  of the cargo bed in centimeters',  verbose_name="Width")
+    height = models.FloatField(help_text='height of the cargo bed in centimeters', verbose_name="Height")
+    weight = models.FloatField(help_text='Gross Vehicle Weight in Kilograms', verbose_name="Weight")
 
     def __str__(self):
         return f"Cargo {self.cargo.id} : Weight:{self.weight}, Length:{self.length}, Width:{self.width}, Height:{self.height}"
