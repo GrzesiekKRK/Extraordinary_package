@@ -19,12 +19,15 @@ class CustomUser(AbstractUser):
         verbose_name="Secondary Email",
         help_text="Emergency email if primary email is lost. Optional",
     )
-    address = models.CharField(
+    billing_address = models.CharField(
         max_length=100,
         null=True,
         blank=True,
         verbose_name="Billing Address",
         help_text="Billing address",
+    )
+    postal_code = models.CharField(
+        max_length=10, verbose_name="Postal Code", default="32-856"
     )
 
     def __str__(self) -> str:
