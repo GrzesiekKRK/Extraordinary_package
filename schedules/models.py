@@ -1,7 +1,7 @@
 from django.db import models
 from users.models import Department, Employee
 from vehicles.models import Vehicle
-from cargos.models import CargoTransport
+from cargos.models import CargoTransport, CargoTransportStatus
 
 
 class Schedule(models.Model):
@@ -9,6 +9,7 @@ class Schedule(models.Model):
     cargo = models.ForeignKey(CargoTransport, on_delete=models.CASCADE)
     vehicle = models.OneToOneField(Vehicle, on_delete=models.CASCADE)
     driver = models.OneToOneField(Employee, on_delete=models.CASCADE)
+    status = models.ForeignKey(CargoTransportStatus, on_delete=models.CASCADE)
     collection_date = models.DateTimeField()
     delivery_date = models.DateTimeField()
     transport_duration = models.FloatField()

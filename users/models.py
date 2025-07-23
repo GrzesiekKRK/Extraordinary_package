@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
         specific to the application. This includes role management, user-specific
         information, and secondary contact details.
     """
-    email = models.EmailField(max_length=50,unique=True, verbose_name="Email")
+    email = models.EmailField(max_length=50, unique=True, verbose_name="Email")
     phone_number = models.CharField(max_length=11, verbose_name="Phone Number")
     created_at = models.DateTimeField(auto_now_add=True)
     secondary_email = models.EmailField(

@@ -5,9 +5,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    # path("", DashboardView.as_view(), name="market-dashboard"),
     path("admin/", admin.site.urls),
-    # path("contact/", ConcatView.as_view(), name="market-contact"),
+    path("", include("users.urls")),
 ]
 
 if settings.DEBUG:
