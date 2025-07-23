@@ -8,8 +8,8 @@ class ScheduleAdmin(admin.ModelAdmin):
                     "collection_date",
                     "delivery_date",
                     "transport_duration",
-                    "Department",
-                    "absence_duration",
+                    "department",
+                    "total_duration",
                     ]
     ordering = ["collection_date"]
     list_per_page = 25

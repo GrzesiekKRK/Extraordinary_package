@@ -13,13 +13,13 @@ class VehicleAdmin(admin.ModelAdmin):
 
 
 class VehicleDimensionAdmin(admin.ModelAdmin):
-    list_filter = ["vehicles",
+    list_filter = ["vehicle",
                    "width",
                    "length",
                    "height",
                    "payload_capacity"
                    ]
-    ordering = ["vehicles"]
+    ordering = ["vehicle"]
     list_per_page = 25
 
 

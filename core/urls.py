@@ -4,12 +4,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from .views import ConcatView, DashboardView
-
 urlpatterns = [
-    path("", DashboardView.as_view(), name="market-dashboard"),
+    # path("", DashboardView.as_view(), name="market-dashboard"),
     path("admin/", admin.site.urls),
-    path("contact/", ConcatView.as_view(), name="market-contact"),
+    # path("contact/", ConcatView.as_view(), name="market-contact"),
 ]
 
 if settings.DEBUG:

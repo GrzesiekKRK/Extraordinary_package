@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import Department
-import consts as vehicle_type
+from vehicles import consts as vehicle_type
 
 
 class Vehicle(models.Model):
@@ -9,7 +9,7 @@ class Vehicle(models.Model):
         It works in conjunction with the VehicleDimension component to improve overall performance.
     """
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    type = models.CharField(max_length=30, choices=vehicle_type)
+    type = models.CharField(max_length=30, choices=vehicle_type.TRUCK_TYPE_CHOICES)
     plates = models.CharField(max_length=20, unique=True)
     connected_to = models.ForeignKey(
         'self',

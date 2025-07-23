@@ -1,4 +1,21 @@
 from django.db import models
+from cargos import consts as status
+
+
+class CargoTransportStatus(models.Model):
+    STATUS_CHOICES = [
+                        (status.STATUS_PENDING_ACCEPTANCE, "Pending acceptance"),
+                        (status.STATUS_ACCEPTED, "Accepted"),
+                        (status.STATUS_IN_PROGRESS, "In progress"),
+                        (status.STATUS_COMPLETED, "Completed"),
+                        (status.STATUS_REJECTED, "Rejected")
+                    ]
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES)
+
+    def __str__(self) -> str:
+        return f"Transport demand created at: {self.created_at},last update {self.updated_at}, Status:"
 
 
 class CargoTransport(models.Model):
@@ -6,11 +23,12 @@ class CargoTransport(models.Model):
         The CargoTransport model represents customer cargo pickup and delivery point and price.
         Working in conjunction with OrderDimension for better performance
     """
+    cargo_status = models.ForeignKey(CargoTransportStatus, on_delete=models.CASCADE)
     total_distance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Total Distance")
     total_duration = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Total Duration")
     transport_distance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Transport Distance")
     transport_duration = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Transport Duration")
-    price = models.DecimalField(max_digits=10, decimal_places=2, min_value=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     collection_date = models.DateTimeField(auto_now_add=True, verbose_name="Collection Date")
     collection_address = models.CharField(
         max_length=100,

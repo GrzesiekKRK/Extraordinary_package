@@ -18,21 +18,16 @@ INSTALLED_APPS = [
     "djangoql",
     "debug_toolbar",
     "django_extensions",
-    "axes",
-    # "silk",
     "crispy_forms",
     "crispy_bootstrap4",
 ]
 
 INSTALLED_EXTENSIONS = [
     "cargos",
-    "deliveries",
-    "schedules",
     "notifications",
-    "orders",
-    "payments",
-    "vehicles",
+    "schedules",
     "users",
+    "vehicles",
 ]
 
 INSTALLED_APPS += INSTALLED_EXTENSIONS
@@ -66,9 +61,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "users.context_processors.roles",
-                "cart.context_processors.items_number",
-                "notifications.context_processors.messages_number",
             ],
         },
     },
@@ -79,12 +71,14 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': BASE_DIR / 'Extra_package',
-                'USER': postgres,
-                'PASSWORD': '9261',
-                'HOST': 'http://localhost:8000',
-                'PORT': '5432',
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+                # 'ENGINE': 'django.db.backends.postgresql',
+                # 'NAME': BASE_DIR / 'Extra_package',
+                # 'USER': 'postgres',
+                # 'PASSWORD': '9261',
+                # 'HOST': 'http://localhost:8000',
+                # 'PORT': '5432',
     }
 }
 
@@ -125,8 +119,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.CustomUser"
-
-
 
 LOGIN_REDIRECT_URL = "/login"
 INTERNAL_IPS = [

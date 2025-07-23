@@ -1,4 +1,8 @@
+OFFICE = 1
+TRANSPORT = 2
+
+
 DEPARTMENTS = [
-    ("Office", "Office"),
-    ("Transport", "Transport"),
-]
+                OFFICE,
+                TRANSPORT,
+                ]

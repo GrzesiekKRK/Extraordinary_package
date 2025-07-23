@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from cargos.models import CargoTransport, CargoDimension
+from cargos.models import CargoTransportStatus, CargoTransport, CargoDimension
+
+
+class CargoTransportStatusAdmin(admin.ModelAdmin):
+    list_filter = ["status"]
+    list_per_page = 25
+    ordering = ["-status"]
 
 
 class CargoTransportAdmin(admin.ModelAdmin):
@@ -26,5 +32,6 @@ class CargoDimensionAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 
+admin.site.register(CargoTransportStatus, CargoTransportStatusAdmin)
 admin.site.register(CargoTransport, CargoTransportAdmin)
 admin.site.register(CargoDimension, CargoDimensionAdmin)
