@@ -20,8 +20,17 @@ class Vehicle(models.Model):
         related_name='attached_trailers'
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.type} plates:{self.plates} "
+
+    def clean(self) -> None:
+        from django.core.exceptions import ValidationError
+
+        if self.type == 'TRUCK' and self.connected_to is not None:
+            raise ValidationError("Only Tractor can attach Semi-trailer")
+
+        if self.type != 'TRAILER' and self.connected_to is not None:
+            raise ValidationError("Semi-trailer can only be attach to Tractor ")
 
 
 class VehicleDimension(models.Model):
