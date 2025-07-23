@@ -47,7 +47,8 @@ class CargoTransport(models.Model):
                 f"Collection Date: {self.collection_date} "
                 f"Collection address: {self.collection_address} "
                 f"Delivery address: {self.delivery_address}"
-                f"Distance: {self.distance}"
+                f"Transport distance: {self.transport_distance} "
+                f"Total distance: {self.total_distance}"
                 f"Price: {self.price} "
 
                 )
