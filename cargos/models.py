@@ -15,7 +15,7 @@ class CargoTransportStatus(models.Model):
     status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES)
 
     def __str__(self) -> str:
-        return f"Transport demand created at: {self.created_at},last update {self.updated_at}, Status:"
+        return f"Transport demand created at: {self.created_at},last update {self.updated_at}, Status: {self.status}"
 
 
 class CargoTransport(models.Model):

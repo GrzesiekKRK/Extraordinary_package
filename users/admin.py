@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import CustomUser, Employee
+from .models import CustomUser,Department, Employee
 
 
 class CustomUserAdmin(admin.ModelAdmin):
@@ -18,6 +18,11 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = ["address"]
+    list_per_page = 25
+
+
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = [
                     "department",
@@ -31,4 +36,5 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Employee, EmployeeAdmin)

@@ -40,7 +40,7 @@ class Department(models.Model):
     """
     DEPARTMENTS_CHOICES = (
         (departments.OFFICE, "Office"),
-        (departments.TRANSPORT, "Driver"),
+        (departments.TRANSPORT, "Transport"),
 
     )
     type = models.PositiveSmallIntegerField(choices=DEPARTMENTS_CHOICES)
@@ -64,3 +64,6 @@ class Employee(CustomUser):
                 f"{self.user.first_name} {self.user.last_name}"
                 f" department {self.department.type} address {self.department.address}"
                 )
+
+    class Meta:
+        verbose_name = "Employee"
